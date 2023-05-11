@@ -1,0 +1,131 @@
+
+#instalacion de docker
+instalar docker 
+
+composer --version
+
+docker --version
+
+docker
+c:\Program Files\Docker\Docker\resources\bin
+
+ir a hub.docker.composer  
+a containers 
+y buscar php
+ ir al cmd
+ 
+ docker pull php
+ 
+ docker pull php:7.4-apache
+ 
+ docker images
+ 
+ docker run -it --name php_cont php:7.4-apache /bin/bash
+ 
+ cd   
+ cd etc/apache2
+ ls
+ exit
+  docker ps
+  docker -ps -a
+  
+  docker stop
+  3cd003
+ 
+
+
+
+crear un script de dockerfile 
+     FROM php:7.4-apache
+	 COPY site/ /var/www/html/
+	 EXPOSE 80
+
+
+ir al cmd por ejemplo
+d:\tutorials\docker>
+build -t php_apache
+
+docker images
+
+
+docker run -i --rm --name php_cont -p 80:80 php_apache
+ ir al navegador localhost
+ 
+docker stop 4bb1a8fd4a7f
+docker run -i --rm --name php_cont -v c:\tutoriales\docker\site\:/var/www/html/ -p 80:80 php_apache
+ 
+
+crear un script de dockerfile 
+     FROM php:7.4-apache
+	 COPY site/ /var/www/html/
+	 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf 
+	 EXPOSE 80
+docker ps -a
+
+docker stop 5554ddf67d1f
+
+docker images
+
+docker rmi php_apache
+
+docker build -t php_apache
+
+docker run -i --rm --name php_cont -v c:\tutoriales\docker\site\:/var/www/html/ -p 80:80 php_apache
+
+
+ir a la carpeta de scripts
+      crear docker_composer
+      version: "3.7"
+	  services:
+	    web:
+		build:
+		volumes: 
+		   - ./site:/var/www/html/
+		ports:
+		   -80:80
+		 db:
+		    images:mysql
+			volumes:
+			  - ./db_data:/var/lib/mysql
+			enviroment:
+			   MYSQL_ROOT_PASSWORD:12345
+			   MYSQL_DATABASE:docker_database
+			ports:
+			  -3306:3306
+ir al cmd
+  escribir docker images
+   
+ir a cmd 
+          d:\tutoriales\docker
+docker-compose up
+iniciar apache con xampp
+
+docker-compose up
+		  
+docker-ps
+
+crear un script de dockerfile 
+     FROM php:7.4-apache
+	 COPY site/ /var/www/html/
+	 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf 
+	 RUN docker-php-ext-install pdo pdo_mysql
+	 EXPOSE 80
+	 
+cmd 
+
+  docker-compose-down
+  docker rmi docker_web
+  
+  docker-compose up
+  
+luego
+   docker images
+   docker ps
+   docker login
+   docker commit  238948939d892 servel/php_apache_apo:1.0
+ docker images
+docker push php_apache_apo
+ docker push php_apache_apo:1.0
+ 
+
+  
